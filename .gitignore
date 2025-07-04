@@ -21,7 +21,13 @@
 # production
 /build
 .env
-
+/dist
+# TypeScript compilation output
+dist/
+build/
+*.js
+*.js.map
+*.d.ts
 /src/generated/prisma
 
 # misc
