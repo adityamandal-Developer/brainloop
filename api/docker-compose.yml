@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  brainloop:
+    image: postgres:17
+    container_name: brainloop
+    restart: always
+    environment:
+      POSTGRES_USER: brainuser
+      POSTGRES_PASSWORD: brainpass
+      POSTGRES_DB: brainloopdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
