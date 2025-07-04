@@ -22,6 +22,8 @@
 /build
 .env
 /dist
+/api/dist/
+
 # TypeScript compilation output
 dist/
 build/
