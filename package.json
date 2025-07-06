@@ -11,12 +11,17 @@
   "devDependencies": {
     "prettier": "^3.6.0",
     "turbo": "^2.5.4",
-    "typescript": "5.8.2"
+    "typescript": "5.8.2",
+    "@types/minimatch": "3.0.5"
   },
   "engines": {
     "node": ">=18"
   },
   "packageManager": "bun@1.2.18",
+  "resolutions": {
+    "minimatch": "^3.0.0",
+    "@types/minimatch": "^3.0.0"
+  },
   "workspaces": [
     "apps/*",
     "packages/*"
