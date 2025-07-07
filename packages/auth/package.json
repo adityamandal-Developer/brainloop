@@ -1,0 +1,21 @@
+{
+  "name": "auth",
+  "module": "index.ts",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "argon2": "^0.43.0",
+    "bcrypt": "^6.0.0",
+    "paseto-ts": "^2.0.5"
+  }
+}

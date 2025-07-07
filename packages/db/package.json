@@ -5,6 +5,13 @@
   "exports": {
     ".": "./index.ts"
   },
+  "scripts": {
+    "studio": "bunx prisma studio",
+    "generate": "bunx prisma generate",
+    "migrate": "bunx prisma migrate dev --name init",
+    "docker-down": "down docker-compose down -v",
+    "docker-up": "docker-compose up -d"
+  },
   "private": true,
   "devDependencies": {
     "@types/bun": "latest",
