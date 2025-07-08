@@ -55,11 +55,3 @@ export const verifyToken = async (token: string) => {
     return null;
   }
 };
-
-// (async () => {
-//   return await verifyToken(
-//     "v4.public.eyJuYW1lIjoiYWk0IiwiZW1haWwiOiJhZGk0QGdtYWlsLmNvbSIsImlkIjoiZWJjMDZlN2MtNzZmNi00NWE2LTg5MGItODhhZGFlYmFlMTIwIiwiaWF0IjoiMjAyNS0wNy0wOFQwOTowNDoyMi45NjVaIiwiZXhwIjoiMjAyNS0wNy0wOVQwOTowNDoyMi45NjVaIn3QUW9p5vyulh9KSVxRgRQe8T90PM68tj1ykzKsZPDa3USn9AcPei1iK31KP9yapVzsapK03EdlsC20Q2aKp3AB"
-//   );
-// })()
-//   .then((data) => console.log(data))
-//   .catch((e) => console.error(e));

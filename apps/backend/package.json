@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "start": "bun run index.ts",
-    "dev": "bun run nodemon"
+    "dev": "bun run nodemon",
+    "build": "bun build ./index.ts --target=node --outdir=dist"
   },
   "private": true,
   "devDependencies": {

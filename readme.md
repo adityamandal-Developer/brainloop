@@ -133,3 +133,4 @@ Learn more about the power of Turborepo:
 - [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
 - [Configuration Options](https://turborepo.com/docs/reference/configuration)
 - [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+  ![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/adityamandal-Developer/brainloop?utm_source=oss&utm_medium=github&utm_campaign=adityamandal-Developer%2Fbrainloop&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
