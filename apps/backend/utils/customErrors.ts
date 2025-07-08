@@ -28,3 +28,16 @@ export class ValidationError extends CustomError {
     this.name = "ValidationError";
   }
 }
+export class CookieError extends CustomError {
+  constructor(message: string = "Cookie Validation failed") {
+    super(message, 400);
+    this.name = "CookieError";
+  }
+}
+
+export class TokenError extends CustomError {
+  constructor(message: string = "Cookie Validation failed") {
+    super(message, 400);
+    this.name = "TokenError";
+  }
+}

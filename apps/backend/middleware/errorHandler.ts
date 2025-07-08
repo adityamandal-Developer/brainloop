@@ -12,6 +12,7 @@ export const errorHandler = (
   next: NextFunction
 ) => {
   console.error("here Error occurred:", err);
+
   // Handle Prisma errors
   if (err instanceof PrismaClientKnownRequestError) {
     switch (err.code) {
@@ -91,9 +92,24 @@ export const errorHandler = (
     return;
   }
 
+  if (err.name === "CookieError") {
+    res.status(401).json({
+      message: "Invalid cookie",
+    });
+    return;
+  }
+
+  if (err.name === "TokenError") {
+    res.status(401).json({
+      message: "Invalid token",
+    });
+    return;
+  }
   // Default fallback
   const statusCode = err.statusCode || err.status || 500;
+
   const error = JSON.parse(err);
+
   const message = err.message || error[0].message || "Something went wrong";
 
   res.status(statusCode).json({

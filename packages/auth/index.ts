@@ -49,16 +49,16 @@ export const verifyToken = async (token: string) => {
     if (!process.env.PUBLIC_KEY) {
       return;
     }
-    const { payload, footer } = verify(process.env.PUBLIC_KEY, token);
-    return { payload, footer };
+    const { payload } = verify(process.env.PUBLIC_KEY, token);
+    return { payload };
   } catch (error: any) {
-    throw new Error(error.message);
+    return null;
   }
 };
 
 // (async () => {
 //   return await verifyToken(
-//     "v4.public.eyJuYW1lIjoiYWRpIiwiZW1haWwiOiJhZGlAZ21haWwuY29tIiwiaWQiOiI1NWUwNjNlMy0wNjcyLTQ3YjctYWQ4OS1hNTc1OWVlZjEwZDAiLCJpYXQiOiIyMDI1LTA3LTA3VDA5OjI2OjQ1LjEwNVoiLCJleHAiOiIyMDI1LTA3LTA4VDA5OjI2OjQ1LjEwNVoifQeDpx6KBp8_Br2rk4WncvYGII1zoivG4M9e6tm81BN6PrMmRozlav6rDFGir6C7fsd7uoAfSOwgL_xTyW162Qk"
+//     "v4.public.eyJuYW1lIjoiYWk0IiwiZW1haWwiOiJhZGk0QGdtYWlsLmNvbSIsImlkIjoiZWJjMDZlN2MtNzZmNi00NWE2LTg5MGItODhhZGFlYmFlMTIwIiwiaWF0IjoiMjAyNS0wNy0wOFQwOTowNDoyMi45NjVaIiwiZXhwIjoiMjAyNS0wNy0wOVQwOTowNDoyMi45NjVaIn3QUW9p5vyulh9KSVxRgRQe8T90PM68tj1ykzKsZPDa3USn9AcPei1iK31KP9yapVzsapK03EdlsC20Q2aKp3AB"
 //   );
 // })()
 //   .then((data) => console.log(data))

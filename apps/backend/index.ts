@@ -40,3 +40,18 @@ app.get("/", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`running port ${PORT}`);
 });
+
+declare global {
+  namespace Express {
+    interface Request {
+      user?: {
+        name: string;
+        email: string;
+        id: string;
+        iat?: string;
+        exp?: string;
+      };
+      customProperty?: string;
+    }
+  }
+}
