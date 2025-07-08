@@ -14,7 +14,7 @@ export const extractToken = async (cookies: string) => {
     if (!token || !token.startsWith("access_token=Bearer")) {
       throw new TokenError();
     }
-    const encodedToken = token.split(" ")[1]c;
+    const encodedToken = token.split(" ")[1];
 
     if (!encodedToken) {
       throw new TokenError();
