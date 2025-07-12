@@ -9,7 +9,7 @@
     "studio": "bunx prisma studio",
     "generate": "bunx prisma generate",
     "migrate": "bunx prisma migrate dev --name init",
-    "docker-down": "down docker-compose down -v",
+    "docker-down": "docker-compose down -v",
     "docker-up": "docker-compose up -d"
   },
   "private": true,

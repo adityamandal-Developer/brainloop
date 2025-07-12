@@ -5,12 +5,16 @@ import morgan from "morgan";
 import rateLimit from "express-rate-limit";
 import { errorHandler } from "./middleware/errorHandler";
 import authRouter from "./routes/auth.route";
+import userRoutes from "./routes/user.routes";
+import { authenticated } from "./middleware/authenticated";
+import bodyParser from "body-parser";
 
 const app = express();
 
 const PORT = process.env.PORT || 8080;
 
 app.set("trust proxy", 1);
+app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -31,6 +35,8 @@ app.use(
 );
 
 app.use("/auth", authRouter);
+
+app.use("/user", authenticated, userRoutes);
 
 app.use(errorHandler);
 app.get("/", async (req, res) => {

@@ -19,17 +19,17 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "auth": "*",
     "body-parser": "^2.2.0",
     "compression": "^1.8.0",
     "cors": "^2.8.5",
     "db": "*",
-    "auth": "*",
-    "validators": "*",
     "dotenv": "^17.0.1",
     "express": "^5.1.0",
     "express-rate-limit": "^7.5.1",
     "helmet": "^8.1.0",
     "morgan": "^1.10.0",
+    "validators": "*",
     "zod": "^3.25.74"
   }
 }
