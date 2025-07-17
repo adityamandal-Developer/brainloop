@@ -7,6 +7,7 @@ export async function findUser(
   res: Response,
   next: NextFunction
 ) {
+  console.log("cnwiufcniufchoiurfvchuio");
   try {
     if (!req.user) {
       res.status(401).send({ message: "Invalid request" });
@@ -14,7 +15,7 @@ export async function findUser(
     }
 
     const user = await findUserAction(req.user.id);
-
+    console.log(user);
     res.status(201).send({ message: "user found", user: user });
   } catch (error) {
     res.status(401).send({ message: "unauthorized request or user not found" });

@@ -19,6 +19,7 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@google/genai": "^1.9.0",
     "auth": "*",
     "body-parser": "^2.2.0",
     "compression": "^1.8.0",

@@ -8,6 +8,7 @@ import authRouter from "./routes/auth.route";
 import userRoutes from "./routes/user.routes";
 import { authenticated } from "./middleware/authenticated";
 import bodyParser from "body-parser";
+import askRouter from "./routes/ask.route";
 
 const app = express();
 
@@ -20,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
     origin: "*",
-    credentials: true,
+    // credentials: true,
   })
 );
 app.use(helmet());
@@ -35,8 +36,8 @@ app.use(
 );
 
 app.use("/auth", authRouter);
-
 app.use("/user", authenticated, userRoutes);
+app.use("/ai", askRouter);
 
 app.use(errorHandler);
 app.get("/", async (req, res) => {
