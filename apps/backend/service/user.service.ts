@@ -5,7 +5,7 @@ import { findUserAction, updateUserAction } from "../actions/user.action";
 export async function findUser(
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
   console.log("cnwiufcniufchoiurfvchuio");
   try {
@@ -25,7 +25,7 @@ export async function findUser(
 export async function updateUser(
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
   try {
     if (!req.user) {

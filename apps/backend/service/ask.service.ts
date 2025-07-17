@@ -18,7 +18,7 @@ export const ask = async (req: Request, res: Response) => {
   try {
     for await (const chunk of geminiResponse(question)) {
       res.write(
-        `data: ${JSON.stringify({ response: chunk, streaming: "yes" })}\n\n`
+        `data: ${JSON.stringify({ response: chunk, streaming: "yes" })}\n\n`,
       );
     }
     res.write(`data: ${JSON.stringify({ streaming: "no" })}\n\n`);

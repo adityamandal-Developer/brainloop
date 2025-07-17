@@ -149,7 +149,7 @@ function CodeEditor({
       data-slot="code-editor"
       className={cn(
         "relative bg-muted/50 w-[600px] h-[400px] border border-border overflow-hidden flex flex-col rounded-xl",
-        className
+        className,
       )}
       {...props}
     >
@@ -168,7 +168,7 @@ function CodeEditor({
               className={cn(
                 "flex flex-row items-center gap-2",
                 dots &&
-                  "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                  "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
               )}
             >
               {icon ? (
@@ -219,7 +219,7 @@ function CodeEditor({
             "[&>pre,_&_code]:!bg-transparent [&>pre,_&_code]:[background:transparent_!important] [&>pre,_&_code]:border-none [&_code]:!text-[13px]",
             cursor &&
               !isDone &&
-              "[&_.line:last-of-type::after]:content-['|'] [&_.line:last-of-type::after]:animate-pulse [&_.line:last-of-type::after]:inline-block [&_.line:last-of-type::after]:w-[1ch] [&_.line:last-of-type::after]:-translate-px"
+              "[&_.line:last-of-type::after]:content-['|'] [&_.line:last-of-type::after]:animate-pulse [&_.line:last-of-type::after]:inline-block [&_.line:last-of-type::after]:w-[1ch] [&_.line:last-of-type::after]:-translate-px",
           )}
           dangerouslySetInnerHTML={{ __html: highlightedCode }}
         />

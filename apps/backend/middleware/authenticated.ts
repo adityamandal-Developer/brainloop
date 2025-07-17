@@ -7,7 +7,7 @@ import { extractToken } from "../utils/extractToken";
 export const authenticated = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   const cookies = req.headers.cookie;
   if (!cookies) {

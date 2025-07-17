@@ -6,7 +6,7 @@ import { loginUserSchema, registerUserSchema } from "validators";
 export async function registerUser(
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
   try {
     const result = await registerUserSchema.safeParseAsync(req.body);
@@ -30,7 +30,7 @@ export async function registerUser(
 export async function loginUser(
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
   try {
     const result = await loginUserSchema.safeParseAsync(req.body);

@@ -167,7 +167,7 @@ export default function AI_Prompt({
                 placeholder={"What can I do for you?"}
                 className={cn(
                   "w-full rounded-xl rounded-b-none px-4 py-3 bg-black/5 dark:bg-white/5 border-none dark:text-white placeholder:text-black/70 dark:placeholder:text-white/70 resize-none focus-visible:ring-0 focus-visible:ring-offset-0",
-                  "min-h-[72px]"
+                  "min-h-[72px]",
                 )}
                 ref={textareaRef}
                 onKeyDown={handleKeyDown}
@@ -218,7 +218,7 @@ export default function AI_Prompt({
                       className={cn(
                         "min-w-[10rem]",
                         "border-black/10 dark:border-white/10",
-                        "bg-gradient-to-b from-white via-white to-neutral-100 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-800"
+                        "bg-gradient-to-b from-white via-white to-neutral-100 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-800",
                       )}
                     >
                       {AI_MODELS.map((model) => (
@@ -246,7 +246,7 @@ export default function AI_Prompt({
                     className={cn(
                       "rounded-lg p-2 bg-black/5 dark:bg-white/5 cursor-pointer",
                       "hover:bg-black/10 dark:hover:bg-white/10 focus-visible:ring-1 focus-visible:ring-offset-0 focus-visible:ring-blue-500",
-                      "text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white"
+                      "text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white",
                     )}
                     aria-label="Attach file"
                   >
@@ -258,7 +258,7 @@ export default function AI_Prompt({
                   type="button"
                   className={cn(
                     "rounded-lg p-2 bg-black/5 dark:bg-white/5",
-                    "hover:bg-black/10 dark:hover:bg-white/10 focus-visible:ring-1 focus-visible:ring-offset-0 focus-visible:ring-blue-500"
+                    "hover:bg-black/10 dark:hover:bg-white/10 focus-visible:ring-1 focus-visible:ring-offset-0 focus-visible:ring-blue-500",
                   )}
                   aria-label="Send message"
                   disabled={!value.trim()}
@@ -266,7 +266,7 @@ export default function AI_Prompt({
                   <ArrowRight
                     className={cn(
                       "w-4 h-4 dark:text-white transition-opacity duration-200",
-                      value.trim() ? "opacity-100" : "opacity-30"
+                      value.trim() ? "opacity-100" : "opacity-30",
                     )}
                   />
                 </button>

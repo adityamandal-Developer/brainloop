@@ -22,7 +22,7 @@ app.use(
   cors({
     origin: "*",
     // credentials: true,
-  })
+  }),
 );
 app.use(helmet());
 app.use(morgan("dev"));
@@ -32,7 +32,7 @@ app.use(
     max: 100, // limit each IP to 100 requests per windowMs
     standardHeaders: true,
     legacyHeaders: false,
-  })
+  }),
 );
 
 app.use("/auth", authRouter);
