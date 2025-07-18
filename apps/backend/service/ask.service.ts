@@ -30,15 +30,28 @@ export const ask = async (req: Request, res: Response) => {
 };
 
 export const askcheck = async (req: Request, res: Response) => {
-  const { question } = req.body;
-  if (!question) {
-    res.status(400).json({ error: "Question is required" });
-    return;
-  }
   try {
-    console.log("iwujsehdfdcbniwerufbhriweufhuiw");
-    res.send({ question: question, message: "This is a test response" });
+    console.log("Ask-check endpoint hit with body:", req.body);
+    console.log("Request headers:", req.headers);
+    console.log("Request method:", req.method);
+
+    const { question } = req.body;
+    if (!question) {
+      res.status(400).send({ error: "Question is required" });
+      return;
+    }
+
+    console.log("Sending response for question:", question);
+
+    const response = {
+      question: question,
+      message: "This is a test response",
+      timestamp: new Date().toISOString(),
+    };
+
+    res.send({ response });
   } catch (error) {
-    res.send("some error");
+    console.error("Error in askcheck endpoint:", error);
+    res.status(500).send({ error: "Internal server error" });
   }
 };
