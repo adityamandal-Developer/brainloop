@@ -55,20 +55,16 @@ const OPENAI_SVG = (
 );
 
 export default function AI_Prompt({
-  value,
-  setValue,
   onSubmit,
 }: {
-  value: string;
-  setValue: (value: string) => void;
-  onSubmit: () => void;
+  onSubmit: (value: string) => void;
 }) {
   const { textareaRef, adjustHeight } = useAutoResizeTextarea({
     minHeight: 72,
     maxHeight: 300,
   });
   const [selectedModel, setSelectedModel] = useState("GPT-4-1 Mini");
-
+  const [value, setValue] = useState("");
   const AI_MODELS = [
     "o3-mini",
     "Gemini 2.5 Flash",
@@ -142,14 +138,14 @@ export default function AI_Prompt({
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
-      onSubmit();
+      onSubmit(value);
       setValue("");
       adjustHeight(true);
     }
   };
-
+  // lg:w-[70%] xl:w-[55%] w-[95%] bottom-5 left-1/2 -translate-x-1/2 z-50 bg-background border rounded-3xl overflow-hidden
   return (
-    <div className="lg:w-[70%] xl:w-[55%] w-[95%] fixed bottom-5 left-1/2 -translate-x-1/2 z-50 bg-background border rounded-3xl overflow-hidden">
+    <div className="w-full max-w-3xl mx-auto p-4 border rounded-3xl bg-background">
       <div className="p-1.5 ">
         <div className="flex items-center gap-2 mb-2.5 mx-2">
           <div className="flex-1 flex items-center gap-2">
@@ -161,21 +157,31 @@ export default function AI_Prompt({
         <div className="relative rounded-2xl overflow-hidden">
           <div className="relative flex flex-col">
             <div className="overflow-y-auto " style={{ maxHeight: "400px" }}>
-              <Textarea
-                id="ai-input-15"
-                value={value}
-                placeholder={"What can I do for you?"}
-                className={cn(
-                  "w-full rounded-xl rounded-b-none px-4 py-3 bg-black/5 dark:bg-white/5 border-none dark:text-white placeholder:text-black/70 dark:placeholder:text-white/70 resize-none focus-visible:ring-0 focus-visible:ring-offset-0",
-                  "min-h-[72px]",
-                )}
-                ref={textareaRef}
-                onKeyDown={handleKeyDown}
-                onChange={(e) => {
-                  setValue(e.target.value);
-                  adjustHeight();
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  if (!value.trim()) return;
+                  onSubmit(value);
+                  setValue("");
+                  adjustHeight(true);
                 }}
-              />
+              >
+                <Textarea
+                  id="ai-input-15"
+                  value={value}
+                  placeholder={"What can I do for you?"}
+                  className={cn(
+                    "w-full rounded-xl rounded-b-none px-4 py-3 bg-black/5 dark:bg-white/5 border-none dark:text-white placeholder:text-black/70 dark:placeholder:text-white/70 resize-none focus-visible:ring-0 focus-visible:ring-offset-0",
+                    "min-h-[72px]"
+                  )}
+                  ref={textareaRef}
+                  onKeyDown={handleKeyDown}
+                  onChange={(e) => {
+                    setValue(e.target.value);
+                    adjustHeight();
+                  }}
+                />
+              </form>
             </div>
 
             <div className="h-14 bg-black/5 dark:bg-white/5 rounded-b-xl flex items-center">
@@ -218,7 +224,7 @@ export default function AI_Prompt({
                       className={cn(
                         "min-w-[10rem]",
                         "border-black/10 dark:border-white/10",
-                        "bg-gradient-to-b from-white via-white to-neutral-100 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-800",
+                        "bg-gradient-to-b from-white via-white to-neutral-100 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-800"
                       )}
                     >
                       {AI_MODELS.map((model) => (
@@ -246,7 +252,7 @@ export default function AI_Prompt({
                     className={cn(
                       "rounded-lg p-2 bg-black/5 dark:bg-white/5 cursor-pointer",
                       "hover:bg-black/10 dark:hover:bg-white/10 focus-visible:ring-1 focus-visible:ring-offset-0 focus-visible:ring-blue-500",
-                      "text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white",
+                      "text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white"
                     )}
                     aria-label="Attach file"
                   >
@@ -255,10 +261,10 @@ export default function AI_Prompt({
                   </label>
                 </div>
                 <button
-                  type="button"
+                  type="submit"
                   className={cn(
                     "rounded-lg p-2 bg-black/5 dark:bg-white/5",
-                    "hover:bg-black/10 dark:hover:bg-white/10 focus-visible:ring-1 focus-visible:ring-offset-0 focus-visible:ring-blue-500",
+                    "hover:bg-black/10 dark:hover:bg-white/10 focus-visible:ring-1 focus-visible:ring-offset-0 focus-visible:ring-blue-500"
                   )}
                   aria-label="Send message"
                   disabled={!value.trim()}
@@ -266,7 +272,7 @@ export default function AI_Prompt({
                   <ArrowRight
                     className={cn(
                       "w-4 h-4 dark:text-white transition-opacity duration-200",
-                      value.trim() ? "opacity-100" : "opacity-30",
+                      value.trim() ? "opacity-100" : "opacity-30"
                     )}
                   />
                 </button>

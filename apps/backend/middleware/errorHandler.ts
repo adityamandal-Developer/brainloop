@@ -1,20 +1,17 @@
 // middleware/errorHandler.ts
 import type { Request, Response, NextFunction } from "express";
-import {
-  PrismaClientKnownRequestError,
-  PrismaClientValidationError,
-} from "../../../packages/db/generated/prisma/runtime/library";
+import { PrismaClientError, PrismaValidationError } from "db";
 
 export const errorHandler = (
   err: any,
   req: Request,
   res: Response,
-  next: NextFunction,
+  next: NextFunction
 ) => {
   console.error("here Error occurred:", err);
 
   // Handle Prisma errors
-  if (err instanceof PrismaClientKnownRequestError) {
+  if (err instanceof PrismaClientError) {
     switch (err.code) {
       case "P2002":
         res.status(400).json({
@@ -45,7 +42,7 @@ export const errorHandler = (
   }
 
   // Handle Prisma validation errors
-  if (err instanceof PrismaClientValidationError) {
+  if (err instanceof PrismaValidationError) {
     res.status(400).json({
       message: "Invalid data provided",
     });

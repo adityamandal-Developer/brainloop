@@ -13,7 +13,7 @@ import { useMutation } from "@tanstack/react-query";
 import { GradientText } from "@/components/animate-ui/text/gradient";
 import { fetchDataInChunks } from "@/lib/fetchAidata";
 
-export default function Home() {
+export default function Chat() {
   const [data, setData] = useState("");
   const [generaring, setGenerating] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -86,7 +86,7 @@ export default function Home() {
 
   console.log(data);
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen py-8">
+    <div className="flex flex-col items-center justify-center w-full py-8">
       <div className="md:max-w-4xl w-full mx-auto px-4">
         <Card className="border-none bg-background shadow-none">
           <CardHeader className="">
@@ -113,11 +113,11 @@ export default function Home() {
             ) : (
               <h1 className="flex flex-col gap-2 justify-center items-center text-3xl">
                 <GradientText
-                  className="text-6xl font-bold"
-                  text="Hey Aditya!"
+                  className="text-4xl tracking-wide"
+                  text="Hey Aditya :-)"
                 />
                 <GradientText
-                  className="text-4xl"
+                  className="text-2xl"
                   text="What are you up to today?"
                 />
               </h1>
@@ -126,7 +126,7 @@ export default function Home() {
         </Card>
       </div>
       <div
-        className="flex justify-center items-center w-full mt-28"
+        className="sticky bottom-0 w-full p-4 rounded-3xl z-10 transition-all"
         ref={endRef}
       >
         <AI_Prompt onSubmit={handleSubmit} />
