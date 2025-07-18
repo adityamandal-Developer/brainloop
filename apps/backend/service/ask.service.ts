@@ -18,7 +18,7 @@ export const ask = async (req: Request, res: Response) => {
   try {
     for await (const chunk of geminiResponse(question)) {
       res.write(
-        `data: ${JSON.stringify({ response: chunk, streaming: "yes" })}\n\n`,
+        `data: ${JSON.stringify({ response: chunk, streaming: "yes" })}\n\n`
       );
     }
     res.write(`data: ${JSON.stringify({ streaming: "no" })}\n\n`);
@@ -26,5 +26,19 @@ export const ask = async (req: Request, res: Response) => {
   } catch (error) {
     res.write("some error");
     res.end();
+  }
+};
+
+export const askcheck = async (req: Request, res: Response) => {
+  const { question } = req.body;
+  if (!question) {
+    res.status(400).json({ error: "Question is required" });
+    return;
+  }
+  try {
+    console.log("iwujsehdfdcbniwerufbhriweufhuiw");
+    res.send({ question: question, message: "This is a test response" });
+  } catch (error) {
+    res.send("some error");
   }
 };

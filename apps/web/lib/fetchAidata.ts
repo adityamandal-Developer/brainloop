@@ -1,6 +1,6 @@
 export async function fetchDataInChunks(question: string) {
   try {
-    const response = await fetch("http://localhost:8080/ai/ask", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/ai/ask`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
