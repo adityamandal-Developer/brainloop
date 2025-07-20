@@ -6,18 +6,17 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Check, Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import AI_Prompt from "@/components/ai/input-selector";
-import AITextLoading from "@/components/ai/loading";
-import MarkdownRenderer from "@/components/ai/markdown-renderer";
+import AI_Prompt from "./ai/input-selector";
+import AITextLoading from "./ai/loading";
 import { useMutation } from "@tanstack/react-query";
-import { GradientText } from "@/components/animate-ui/text/gradient";
+import { GradientText } from "./ai/gradient";
 import { fetchDataInChunks } from "@/lib/fetchAidata";
+import MarkdownRenderer from "./ai/markdown-renderer";
 
 export default function Chat() {
   const [data, setData] = useState("");
   const [generaring, setGenerating] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [value, setValue] = useState("");
 
   const mutation = useMutation({
     mutationFn: fetchDataInChunks,
@@ -86,10 +85,12 @@ export default function Chat() {
 
   console.log(data);
   return (
-    <div className="flex flex-col items-center justify-center w-full py-8">
-      <div className="md:max-w-4xl w-full mx-auto px-4">
+    <div
+      className={`flex flex-col items-center justify-center w-full py-8 ${!data && "max-h-screen"}`}
+    >
+      <div className="md:max-w-4xl w-full mx-auto px-4 md:px-10">
         <Card className="border-none bg-background shadow-none">
-          <CardHeader className="">
+          <CardHeader>
             <div className="flex justify-between items-center">
               {data && (
                 <CopyToClipboard text={data} onCopy={handleCopy}>
@@ -111,13 +112,13 @@ export default function Chat() {
             ) : generaring ? (
               <AITextLoading />
             ) : (
-              <h1 className="flex flex-col gap-2 justify-center items-center text-3xl">
+              <h1 className="flex flex-col gap-2 justify-center items-left text-3xl">
                 <GradientText
-                  className="text-4xl tracking-wide"
-                  text="Hey Aditya :-)"
+                  className="text-6xl font-bold"
+                  text="Hey Aditya!"
                 />
                 <GradientText
-                  className="text-2xl"
+                  className="text-4xl"
                   text="What are you up to today?"
                 />
               </h1>

@@ -1,21 +1,16 @@
-import { AppSidebar } from "@/components/app-sidebar";
-import Chat from "@/components/test";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { Separator } from "@/components/ui/separator";
+import React from "react";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "@/components/ui/sidebar";
+} from "./_components/sidebar/sidebar";
+import { AppSidebar } from "./_components/sidebar/app-sidebar";
 
-export default function Page() {
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -26,8 +21,8 @@ export default function Page() {
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          <div className="min-h-[100vh] flex-1  justify-center items-center rounded-xl md:min-h-min">
-            <Chat />
+          <div className="min-h-[100vh] flex-1 justify-center items-center rounded-xl md:min-h-min">
+            {children}
           </div>
         </div>
       </SidebarInset>

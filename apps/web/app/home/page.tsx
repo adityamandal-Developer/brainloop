@@ -1,7 +1,8 @@
-"use client";
-
 import HeroSection from "@/components/heroSection/hero-section";
+import React from "react";
 
-export default function Home() {
+const page = () => {
   return <HeroSection />;
-}
+};
+
+export default page;

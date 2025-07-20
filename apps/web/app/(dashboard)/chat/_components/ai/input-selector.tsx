@@ -19,8 +19,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { motion, AnimatePresence } from "motion/react";
-// import Anthropic from "@/components/icons/anthropic";
-// import AnthropicDark from "@/components/icons/anthropic-dark";
 
 const OPENAI_SVG = (
   <div>
@@ -143,7 +141,6 @@ export default function AI_Prompt({
       adjustHeight(true);
     }
   };
-  // lg:w-[70%] xl:w-[55%] w-[95%] bottom-5 left-1/2 -translate-x-1/2 z-50 bg-background border rounded-3xl overflow-hidden
   return (
     <div className="w-full max-w-3xl mx-auto p-4 border rounded-3xl bg-background">
       <div className="p-1.5 ">

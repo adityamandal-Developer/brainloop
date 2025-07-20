@@ -32,10 +32,11 @@ export async function* geminiResponse(question: string) {
                 - Include links with descriptive text: [someLink](url)
                 - Use images with alt text: ![alt text](image_url)
                 - Use horizontal rules (---) to separate major sections
-                - Use emojis to enhance the visual appeal of the markdown`,
+                - Use emojis to enhance the visual appeal of the markdown
+                - Only give diagrams when asked to`,
           },
           {
-            text: `When giving diagrams or flowcharts, use mermaid syntax with proper formatting and do not give any unnessary diagrams only when when asked or when it is absolutely necessary. Follow these rules:
+            text: `When giving diagrams or flowcharts, use mermaid syntax with proper formatting and do not give any unnessary diagrams, only when when asked or when it is absolutely necessary. Follow these rules:
 
                   ## 🔧 Mermaid Syntax Rules
 

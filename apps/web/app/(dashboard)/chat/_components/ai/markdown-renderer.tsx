@@ -12,7 +12,7 @@ import mermaid from "mermaid";
 import React, { useEffect, useRef, useState as useComponentState } from "react";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-import "katex/dist/katex.min.css"; // Import KaTeX styles
+import "katex/dist/katex.min.css";
 
 type Props = {
   data: string;
