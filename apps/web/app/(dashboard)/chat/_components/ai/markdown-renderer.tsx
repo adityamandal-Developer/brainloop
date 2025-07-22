@@ -266,13 +266,29 @@ const MarkdownRenderer = ({ data }: Props) => {
   };
 
   return (
-    <Markdown
-      remarkPlugins={[remarkGfm, remarkMath]}
-      rehypePlugins={[rehypeRaw, rehypeKatex]}
-      components={markdownComponents}
-    >
-      {data}
-    </Markdown>
+    <>
+      <Markdown
+        remarkPlugins={[remarkGfm, remarkMath]}
+        rehypePlugins={[rehypeRaw, rehypeKatex]}
+        components={markdownComponents}
+      >
+        {data}
+      </Markdown>
+      <div className="flex justify-end items-center">
+        {data && (
+          <CopyToClipboard text={data} onCopy={handleCopy}>
+            <Button variant="ghost" size="sm">
+              {copied ? (
+                <Check className="h-4 w-4 text-primary" />
+              ) : (
+                <Copy className="h-4 w-4" />
+              )}
+              <span className="ml-2">{copied ? "Copied!" : "Copy"}</span>
+            </Button>
+          </CopyToClipboard>
+        )}
+      </div>
+    </>
   );
 };
 

@@ -1,5 +1,3 @@
-"use client";
-
 import HeroSection from "@/components/heroSection/hero-section";
 
 export default function Home() {

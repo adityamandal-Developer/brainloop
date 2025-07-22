@@ -1,22 +1,17 @@
 "use client";
-
 import { useEffect, useRef, useState } from "react";
 
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import { Check, Copy } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import AI_Prompt from "./ai/input-selector";
-import AITextLoading from "./ai/loading";
+import { Card, CardContent } from "@/components/ui/card";
+import PromptInput from "./ai/prompt-Input";
+import LoadingResponse from "./ai/loading";
 import { useMutation } from "@tanstack/react-query";
 import { GradientText } from "./ai/gradient";
-import { fetchDataInChunks } from "@/lib/fetchAidata";
+import { fetchDataInChunks } from "@/lib/actions/getResponse";
 import MarkdownRenderer from "./ai/markdown-renderer";
 
 export default function Chat() {
   const [data, setData] = useState("");
   const [generaring, setGenerating] = useState(false);
-  const [copied, setCopied] = useState(false);
 
   const mutation = useMutation({
     mutationFn: fetchDataInChunks,
@@ -69,7 +64,6 @@ export default function Chat() {
 
   const endRef = useRef<HTMLDivElement | null>(null);
 
-  // Scroll to bottom whenever messages change
   useEffect(() => {
     const timeout = setTimeout(() => {
       endRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -78,47 +72,26 @@ export default function Chat() {
     return () => clearTimeout(timeout);
   }, [data]);
 
-  const handleCopy = () => {
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   console.log(data);
   return (
     <div
-      className={`flex flex-col items-center justify-center w-full py-8 ${!data && "max-h-screen"}`}
+      className={`flex flex-col items-center justify-center w-full sm:py-8 ${!data && "h-screen"}`}
     >
-      <div className="md:max-w-4xl w-full mx-auto px-4 md:px-10">
+      <div className="md:max-w-4xl w-full mx-auto sm:px-4 md:px-10">
         <Card className="border-none bg-background shadow-none">
-          <CardHeader>
-            <div className="flex justify-between items-center">
-              {data && (
-                <CopyToClipboard text={data} onCopy={handleCopy}>
-                  <Button variant="ghost" size="sm">
-                    {copied ? (
-                      <Check className="h-4 w-4 text-primary" />
-                    ) : (
-                      <Copy className="h-4 w-4" />
-                    )}
-                    <span className="ml-2">{copied ? "Copied!" : "Copy"}</span>
-                  </Button>
-                </CopyToClipboard>
-              )}
-            </div>
-          </CardHeader>
-          <CardContent className="p-6">
+          <CardContent className="sm:p-6">
             {data ? (
               <MarkdownRenderer data={data} />
             ) : generaring ? (
-              <AITextLoading />
+              <LoadingResponse />
             ) : (
               <h1 className="flex flex-col gap-2 justify-center items-left text-3xl">
                 <GradientText
-                  className="text-6xl font-bold"
-                  text="Hey Aditya!"
+                  className="text-6xl font-semibold"
+                  text="Hey Aditya"
                 />
                 <GradientText
-                  className="text-4xl"
+                  className="text-3xl"
                   text="What are you up to today?"
                 />
               </h1>
@@ -127,10 +100,10 @@ export default function Chat() {
         </Card>
       </div>
       <div
-        className="sticky bottom-0 w-full p-4 rounded-3xl z-10 transition-all"
+        className="sticky bottom-0 w-full sm:p-4 rounded-3xl z-10 transition-all p-1"
         ref={endRef}
       >
-        <AI_Prompt onSubmit={handleSubmit} />
+        <PromptInput onSubmit={handleSubmit} />
       </div>
     </div>
   );

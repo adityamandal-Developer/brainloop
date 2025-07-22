@@ -27,7 +27,7 @@ export default function HeroSection() {
           </div>
 
           <div className="z-50 flex gap-2 justify-center items-center flex-col text-center">
-            <h1 className="text-balance text-amber-50 text-5xl leading-none tracking-wide sm:text-6xl md:text-7xl lg:text-8xl z-50">
+            <h1 className="text-balance text-[#D4ADFC] text-5xl leading-none tracking-wide sm:text-6xl md:text-7xl lg:text-8xl z-50">
               <span>brain</span>
               <LineShadowText className="italic" shadowColor={"white"}>
                 loop

@@ -9,7 +9,7 @@ interface AITextLoadingProps {
   interval?: number;
 }
 
-export default function AITextLoading({
+export default function LoadingResponse({
   texts = [
     "Thinking...",
     "Processing...",
