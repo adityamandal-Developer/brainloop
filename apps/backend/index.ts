@@ -7,7 +7,6 @@ import { errorHandler } from "./middleware/errorHandler";
 import authRouter from "./routes/auth.route";
 import userRoutes from "./routes/user.routes";
 import { authenticated } from "./middleware/authenticated";
-import bodyParser from "body-parser";
 import askRouter from "./routes/ask.route";
 
 const app = express();
@@ -19,7 +18,8 @@ app.set("trust proxy", 1);
 app.use(
   cors({
     origin: "*",
-    // credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
